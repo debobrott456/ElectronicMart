@@ -15,7 +15,7 @@ export default function Login() {
     e.preventDefault()
     setLoading(true)
 
-    // Mock authentication - hardcoded credentials
+    // Mock authentication - hardcoded credential
     const validEmail = 'admin@electronicmart.com'
     const validPassword = 'password123'
 
