@@ -2,14 +2,15 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Cookies from 'js-cookie'
 import toast from 'react-hot-toast'
+import { useAuth } from '../contexts/AuthContext'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const router = useRouter()
+  const { login } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -20,8 +21,8 @@ export default function Login() {
     const validPassword = 'password123'
 
     if (email === validEmail && password === validPassword) {
-      // Set auth cookie
-      Cookies.set('auth-token', 'mock-jwt-token', { expires: 7 })
+      // Set auth cookie and update context
+      login('mock-jwt-token')
       toast.success('Login successful!')
       router.push('/items')
     } else {

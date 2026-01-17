@@ -10,6 +10,7 @@ const nextConfig = {
       'cdn.simpleicons.org',
       'ui-avatars.com'
     ],
+    
   },
 }
 

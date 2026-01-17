@@ -1,25 +1,18 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Cookies from 'js-cookie'
+import { useAuth } from '../contexts/AuthContext'
 
 export default function ProtectedRoute({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const { isLoggedIn, loading } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
-    const token = Cookies.get('auth-token')
-    
-    if (!token) {
+    if (!loading && !isLoggedIn) {
       router.push('/login')
-    } else {
-      setIsAuthenticated(true)
     }
-    
-    setLoading(false)
-  }, [router])
+  }, [isLoggedIn, loading, router])
 
   if (loading) {
     return (
@@ -32,7 +25,7 @@ export default function ProtectedRoute({ children }) {
     )
   }
 
-  if (!isAuthenticated) {
+  if (!isLoggedIn) {
     return null
   }
 
