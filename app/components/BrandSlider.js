@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const brands = [
   { name: "Samsung", slug: "samsung" },
@@ -42,9 +43,11 @@ const BrandSlider = () => {
               key={index}
               className="flex-none w-32 md:w-40 flex justify-center"
             >
-              <img
+              <Image
                 src={`https://cdn.simpleicons.org/${brand.slug}`}
                 alt={`${brand.name} logo`}
+                width={160}
+                height={40}
                 className="h-10 w-auto opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer object-contain"
                 // Using a fallback color if the CDN is slow
                 onError={(e) => {
