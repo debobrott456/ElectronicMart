@@ -5,14 +5,6 @@ import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 
-// Generate static params for static export
-export async function generateStaticParams() {
-  // Return all possible item IDs
-  return Array.from({ length: 14 }, (_, i) => ({
-    id: (i + 1).toString()
-  }))
-}
-
 export default function ItemDetails() {
   const params = useParams()
   const [item, setItem] = useState(null)
