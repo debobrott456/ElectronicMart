@@ -32,7 +32,7 @@ const BrandSlider = () => {
           }}
           transition={{
             ease: "linear",
-            duration: 25, // Adjust speed here
+            duration: 25, // Adjust speed 
             repeat: Infinity,
           }}
         >
